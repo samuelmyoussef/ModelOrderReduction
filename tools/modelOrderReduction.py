@@ -55,6 +55,12 @@ else:
 
 phasesToExecute = None
 
+## FINGER WIHT COLLISION PARAM
+nodeToReduce = '/solverNode/finger'
+cable = ObjToAnimate("solverNode/finger/cable", incr=1,incrPeriod=10,rangeOfAction=22)
+listObjToAnimate = [cable]
+addRigidBodyModes = [0,0,0]
+
 ### BOUNCING BALL PARAM
 # nodeToReduce = 'solverNode/model'
 # dummyActuator = ObjToAnimate("dummyActuator/actuatorState","shakingLiver",incr=0.4,incrPeriod=2.5,rangeOfAction=6.2,dataToWorkOn="position",angle=0,rodRadius=0.4)
@@ -130,7 +136,7 @@ addToLib = False
 
 #######################################################################
 ####################      INITIALIZATION     ##########################
-reduceMyModel = ReduceModel(    originalScene,  
+reduceMyModel = ReduceModel(    originalScene,
                                 nodeToReduce,
                                 listObjToAnimate,
                                 tolModes,tolGIE,
@@ -144,7 +150,7 @@ reduceMyModel = ReduceModel(    originalScene,
 #######################################################################
 ####################       EXECUTION        ###########################
 ### TO PERFORM THE REDUCTION ALL AT ONCE:
-# reduceMyModel.performReduction(phasesToExecute=phasesToExecute)
+reduceMyModel.performReduction(phasesToExecute=phasesToExecute)
 
 ### TO PERFORM THE REDUCTION STEP BY STEP:
 ####################    SOFA LAUNCHER       ##########################
