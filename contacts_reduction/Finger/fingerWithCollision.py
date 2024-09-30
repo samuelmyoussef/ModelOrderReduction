@@ -83,9 +83,12 @@ def createScene(rootNode):
     cube.addObject('PointCollisionModel',group="0")
     cube.addObject('UncoupledConstraintCorrection')
 
-    cube.addObject('PartialFixedProjectiveConstraint', indices=list(range(0, 27)), fixedDirections=[0, 1, 1])
-    cube.addObject('PositionConstraint', indices=list(range(0, 27)),
-                   valueType="displacement", useDirections=[1, 0, 0])
+    # cube.addObject('PartialFixedProjectiveConstraint', indices=list(range(0, 27)), fixedDirections=[0, 1, 1])
+    # cube.addObject('PositionConstraint', indices=list(range(0, 27)),
+    #                valueType="displacement", useDirections=[1, 0, 0])
+
+    actuator  = rootNode.addChild('actuator')
+    actuator.addObject('MechanicalObject', name='cubeactuator', position='@cube/collisMO.position', template='Vec3d')
     
     finger = solverNode.addChild('finger')
     finger.addObject('MeshVTKLoader', name="loader", filename=path+mesh_file+'.vtk')
